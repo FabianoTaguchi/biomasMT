@@ -74,7 +74,7 @@
     });
 
     var actions = el('div', {class: 'quiz-actions'});
-    var confirmBtn = el('button', {class: 'button', text: 'Confirmar resposta'});
+    var confirmBtn = el('button', {class: 'button confirm-btn', text: 'Confirmar resposta'});
     confirmBtn.addEventListener('click', confirm);
     actions.appendChild(confirmBtn);
 
@@ -96,6 +96,7 @@
   }
 
   function confirm(){
+    if (state.answered) return; // impede duplo clique
     if (selected == null) return;
     var q = questions[state.index];
     var isCorrect = selected === q.correct;
@@ -109,6 +110,10 @@
       b.classList.toggle('correct', idx === q.correct);
       b.classList.toggle('incorrect', idx === selected && !isCorrect);
     });
+
+    // desativa botão Confirmar após uso
+    var cb = root.querySelector('.confirm-btn');
+    if (cb) cb.disabled = true;
 
     if (isCorrect) {
       state.score++;
@@ -136,10 +141,13 @@
     var pct = Math.round((state.score/total)*100);
     root.appendChild(el('h2', {text: 'Resultado'}, []));
     root.appendChild(el('p', {class: 'result', text: 'Você acertou ' + state.score + ' de ' + total + ' (' + pct + '%).'}, []));
-    root.appendChild(el('div', {class: 'result-actions'}, [
-      el('a', {href: 'index.html', class: 'button'}, ['Explorar páginas dos biomas']),
-      el('button', {class: 'button', onclick: (function(){ return function(){ reset(); }; })()}, ['Refazer quiz'])
-    ]));
+
+    var actions = el('div', {class: 'result-actions'});
+    actions.appendChild(el('a', {href: 'index.html', class: 'button'}, ['Explorar páginas dos biomas']));
+    var redoBtn = el('button', {class: 'button', text: 'Refazer quiz'});
+    redoBtn.addEventListener('click', reset);
+    actions.appendChild(redoBtn);
+    root.appendChild(actions);
   }
 
   function reset(){
