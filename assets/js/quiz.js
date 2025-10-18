@@ -170,7 +170,9 @@
     var total = questions.length;
     var pct = Math.round((state.score/total)*100);
     root.appendChild(el('h2', {text: 'Resultado'}, []));
-    root.appendChild(el('p', {class: 'result', text: 'Você acertou ' + state.score + ' de ' + total + ' (' + pct + '%).'}, []));
+    var resEl = el('p', {class: 'result'}, []);
+    resEl.innerHTML = 'Você acertou ' + state.score + ' de ' + total + ' (<span class="result-pct">' + pct + '%</span>).';
+    root.appendChild(resEl);
 
     var actions = el('div', {class: 'result-actions'});
     actions.appendChild(el('a', {href: 'index.html', class: 'button'}, ['Explorar páginas dos biomas']));
