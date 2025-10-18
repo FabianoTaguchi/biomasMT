@@ -31,6 +31,30 @@
       explain: "O lobo-guará é símbolo do Cerrado; adaptado às paisagens abertas."
     },
     {
+      q: "No Pantanal, qual desafio é intensificado por seca e manejo inadequado?",
+      options: ["Incêndios e queimadas", "Derretimento de geleiras", "Invasão marinha"],
+      correct: 0,
+      explain: "Secas e manejo inadequado ampliam o risco de incêndios no Pantanal."
+    },
+    {
+      q: "Qual problema ameaça nascentes e cursos d'água no Pantanal?",
+      options: ["Assoreamento", "Acidificação oceânica", "Nevascas prolongadas"],
+      correct: 0,
+      explain: "O assoreamento entope cursos d'água e afeta nascentes e cabeceiras."
+    },
+    {
+      q: "No Cerrado, qual fator provoca forte fragmentação de habitats?",
+      options: ["Expansão agropecuária", "Atividade vulcânica", "Marés extremas"],
+      correct: 0,
+      explain: "A expansão agropecuária fragmenta áreas nativas, pressionando a biodiversidade."
+    },
+    {
+      q: "O fogo frequente no Cerrado altera principalmente os...",
+      options: ["Ciclos ecológicos naturais", "Regimes de maré", "Camadas de gelo"],
+      correct: 0,
+      explain: "Queimadas recorrentes desbalanceiam ciclos ecológicos e regeneração da vegetação."
+    },
+    {
       q: "Na Amazônia de MT, qual atividade ilegal ameaça a conservação?",
       options: ["Extração de madeira e garimpo ilegal", "Turismo comunitário", "Apicultura local"],
       correct: 0,
