@@ -44,6 +44,10 @@ img { display: block; max-width: 100%; }
 .button { display: inline-block; background: var(--primary); color: #07120c; padding: 10px 14px; border-radius: 10px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; }
 .button:hover { background: var(--primary-2); }
 
+/* Disabled buttons */
+.button:disabled { background: #335c4b; color: #0b1a14; opacity: 0.6; cursor: not-allowed; box-shadow: none; }
+.button:disabled:hover { background: #335c4b; }
+
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); margin-top: 24px; }
 .site-footer small { color: var(--muted); }
