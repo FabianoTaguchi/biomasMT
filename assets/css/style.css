@@ -12,7 +12,7 @@
   --accent-2: #e09a34;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
 html, body { height: 100%; }
 body {
   margin: 0;
