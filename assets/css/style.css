@@ -8,8 +8,11 @@
   --card: #151b22;
   --border: #22303c;
   --danger: #ef5350;
+  --accent: #f0a94b;
+  --accent-2: #e09a34;
 }
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 html, body { height: 100%; }
 body {
   margin: 0;
@@ -24,20 +27,24 @@ img { display: block; max-width: 100%; }
 
 /* Header */
 .site-header { border-bottom: 1px solid var(--border); backdrop-filter: blur(6px); position: sticky; top: 0; z-index: 10; background: rgba(14,19,24,0.75); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; }
-.brand { font-weight: 700; letter-spacing: 0.5px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.brand { font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; flex: 0 0 auto; }
 .brand a { color: var(--text); text-decoration: none; }
-.nav a { color: var(--muted); text-decoration: none; margin-left: 16px; padding: 10px 12px; border-radius: 8px; }
+.nav { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.nav a { color: var(--muted); text-decoration: none; padding: 10px 12px; border-radius: 8px; white-space: nowrap; flex: 0 0 auto; }
 .nav a:hover { background: var(--card); color: var(--text); }
 .nav a.active { background: var(--primary-2); color: #07120c; }
+/* Link do Quiz em destaque, com cor própria */
+.nav a[href="quiz.html"] { background: var(--accent); color: #1a1206; font-weight: 600; }
+.nav a[href="quiz.html"]:hover { background: var(--accent-2); color: #1a1206; }
 
 /* Hero */
-.hero { padding: 36px 0 8px; background: linear-gradient(180deg, rgba(76,195,138,0.1), transparent); }
-.hero h1 { margin: 0 0 6px; font-size: 32px; }
+.hero { padding: clamp(24px, 6vw, 36px) 0 8px; background: linear-gradient(180deg, rgba(76,195,138,0.1), transparent); }
+.hero h1 { margin: 0 0 6px; font-size: clamp(24px, 6vw, 32px); }
 .hero p { color: var(--muted); margin: 0; }
 
 /* Cards */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
 .card img { height: 160px; width: 100%; object-fit: cover; }
 .card-body { padding: 14px; display: grid; gap: 10px; }
@@ -61,13 +68,13 @@ img { display: block; max-width: 100%; }
 /* Carousel */
 .carousel { position: relative; margin: 18px 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #0b1015; }
 .slides { display: flex; transition: transform 480ms ease; width: 100%; }
-.slides img { width: 100%; height: 420px; object-fit: cover; flex: 0 0 100%; }
-.prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; font-size: 28px; line-height: 1; padding: 6px 12px; border-radius: 10px; cursor: pointer; }
+.slides img { width: 100%; height: clamp(220px, 48vw, 420px); object-fit: cover; flex: 0 0 100%; }
+.prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; font-size: 28px; line-height: 1; padding: 8px 14px; border-radius: 10px; cursor: pointer; min-width: 44px; }
 .prev:hover, .next:hover { background: rgba(0,0,0,0.6); }
 .prev { left: 10px; }
 .next { right: 10px; }
-.dots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; }
-.dot { width: 9px; height: 9px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.7); background: transparent; cursor: pointer; padding: 0; }
+.dots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 10px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.7); background: transparent; cursor: pointer; padding: 0; }
 .dot.active { background: #fff; border-color: #fff; }
 
 /* Quiz */
@@ -77,22 +84,39 @@ img { display: block; max-width: 100%; }
 .quiz-progress { position: relative; height: 10px; background: #0b1015; border: 1px solid var(--border); border-radius: 999px; margin-bottom: 12px; }
 .quiz-progress-bar { position: absolute; height: 100%; left: 0; top: 0; background: var(--primary); border-radius: 999px; }
 .quiz-progress-text { margin-top: 8px; font-size: 12px; color: var(--muted); }
-.question { margin: 6px 0 10px; font-size: 20px; }
-.options { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.question { margin: 6px 0 10px; font-size: clamp(18px, 4.5vw, 20px); }
+.options { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 12px; }
 .option-btn { background: #0b1015; color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; text-align: left; cursor: pointer; font-size: 1.05rem; min-height: 56px; line-height: 1.4; }
 .option-btn.selected { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(76,195,138,0.25) inset; }
 .option-btn.correct { border-color: var(--primary); background: rgba(76,195,138,0.1); }
 .option-btn.incorrect { border-color: var(--danger); background: rgba(239,83,80,0.1); }
-.quiz-actions { display: flex; gap: 10px; }
+.quiz-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .feedback { margin-top: 8px; }
 .feedback .ok { color: var(--primary); font-weight: 700; }
 .feedback .err { color: var(--danger); font-weight: 700; }
 .result { color: var(--muted); font-size: 1.5rem; }
 .result-pct { font-weight: 800; color: var(--primary); font-size: 1.5rem; padding: 2px 8px; background: rgba(76,195,138,0.12); border-radius: 8px; }
 
-.result-actions { display: flex; gap: 10px; margin-top: 12px; }
+.result-actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
 
-@media (max-width: 600px) {
-  .slides img { height: 260px; }
-  .hero h1 { font-size: 26px; }
+/* Responsivo */
+@media (max-width: 720px) {
+  /* Cabeçalho: menu com rolagem horizontal, sem estourar a largura */
+  .nav {
+    flex: 1 1 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { padding: 8px 12px; }
+}
+
+@media (max-width: 520px) {
+  .container { padding: 12px; }
+  .quiz-actions, .result-actions { flex-direction: column; }
+  .quiz-actions .button, .result-actions .button { width: 100%; text-align: center; }
+  .result, .result-pct { font-size: 1.2rem; }
+  .quiz-card { padding: 14px; }
 }
